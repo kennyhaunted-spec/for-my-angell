@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Моего Ангелочка 👼💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #0c0c2e 0%, #000000 100%);
+            overflow: hidden;
+            font-family: 'Dancing Script', cursive;
+            cursor: crosshair;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Анимированный фон */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+
+        /* Основной контент */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .main-title {
+            font-size: 5rem;
+            color: transparent;
+            background: linear-gradient(45deg, #ff0066, #ff00cc, #6600ff, #00ccff, #ff0066);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow 3s ease infinite, glow 2s ease-in-out infinite alternate;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 0 0 50px rgba(255, 0, 102, 0.7);
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease 1s forwards;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #fff;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 3s ease 2s forwards;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Счетчик */
+        .hearts-counter {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 102, 0.3);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Разные типы частиц */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s ease-in-out forwards;
+            font-size: 28px;
+            z-index: 100;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: gold;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 2s ease-out forwards;
+            box-shadow: 0 0 20px gold;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            animation: floatRotate 5s ease-in-out forwards;
+            filter: drop-shadow(0 0 15px rgba(255, 192, 203, 0.7));
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            pointer-events: none;
+            animation: confettiFall 3s ease-in forwards;
+            border-radius: 3px;
+        }
+
+        .butterfly {
+            position: absolute;
+            font-size: 26px;
+            pointer-events: none;
+            animation: butterflyFly 6s ease-in-out forwards;
+        }
+
+        .magic {
+            position: absolute;
+            font-size: 32px;
+            pointer-events: none;
+            animation: magicFloat 4s ease-out forwards;
+            filter: drop-shadow(0 0 25px #00ffff);
+        }
+
+        .crystal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            pointer-events: none;
+            animation: crystalSpin 4s linear infinite;
+        }
+
+        /* Анимации */
+        @keyframes rainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #ff0066); }
+            to { filter: drop-shadow(0 0 40px #00ccff); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) rotate(360deg) scale(1.8);
+            }
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 30px gold;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(4) rotate(360deg);
+                box-shadow: 0 0 60px yellow;
+            }
+        }
+
+        @keyframes floatRotate {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-250px) rotate(720deg) scale(2.5);
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(150px) rotate(720deg);
+            }
+        }
+
+        @keyframes butterflyFly {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-100px) translateX(50px) rotate(90deg) scale(1.2);
+            }
+            50% {
+                transform: translateY(-200px) translateX(-30px) rotate(180deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-300px) translateX(80px) rotate(360deg) scale(1.5);
+            }
+        }
+
+        @keyframes magicFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-180px) scale(2) rotate(180deg);
+            }
+        }
+
+        @keyframes crystalSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.5); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Эффект пульсации */
+        .pulse {
+            animation: pulse 3s infinite;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .subtitle { font-size: 1.5rem; }
+            .message { font-size: 1.2rem; padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированные звезды на фоне -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Счетчик сердечек -->
+    <div class="hearts-counter">
+        💖 Сердечек: <span id="counter">0</span> ✨
+    </div>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <h1 class="main-title pulse">Моему Ангелочку 👼</h1>
+        <p class="subtitle">Ты - самое прекрасное, что случилось в моей жизни</p>
+        <p class="message">Каждое твое прикосновение - как магия. Каждая улыбка - как солнце. Ты мое вечное счастье... Кликай везде и увидишь всю магию моей любви к тебе! 💫</p>
+    </div>
+
+    <script>
+        // Создаем звездное небо
+        function createStars() {
+            const stars = document.getElementById('stars');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                stars.appendChild(star);
+            }
+        }
+
+        // Счетчик
+        let heartsCount = 0;
+        const counterElement = document.getElementById('counter');
+
+        // Функции создания эффектов
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.color = getRandomColor();
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.background = getRandomSparkleColor();
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+
+        function createFlower(x, y) {
+            const flowers = ['🌸', '🌺', '🌷', '💮', '🏵️', '🌹', '🥀', '🌻', '🌼'];
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = x + 'px';
+            flower.style.top = y + 'px';
+            flower.style.fontSize = (Math.random() * 25 + 15) + 'px';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 5000);
+        }
+
+        function createButterfly(x, y) {
+            const butterflies = ['🦋', '✨', '🌟'];
+            const butterfly = document.createElement('div');
+            butterfly.className = 'butterfly';
+            butterfly.innerHTML = butterflies[Math.floor(Math.random() * butterflies.length)];
+            butterfly.style.left = x + 'px';
+            butterfly.style.top = y + 'px';
+            document.body.appendChild(butterfly);
+            setTimeout(() => butterfly.remove(), 6000);
+        }
+
+        function createMagic(x, y) {
+            const magicSymbols = ['🔮', '⭐', '💫', '✨', '🌟', '⚡'];
+            const magic = document.createElement('div');
+            magic.className = 'magic';
+            magic.innerHTML = magicSymbols[Math.floor(Math.random() * magicSymbols.length)];
+            magic.style.left = x + 'px';
+            magic.style.top = y + 'px';
+            document.body.appendChild(magic);
+            setTimeout(() => magic.remove(), 4000);
+        }
+
+        function createConfetti(x, y) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = x + 'px';
+            confetti.style.top = y + 'px';
+            confetti.style.background = getRandomColor();
+            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+        }
+
+        function createCrystal(x, y) {
+            const crystal = document.createElement('div');
+            crystal.className = 'crystal';
+            crystal.style.left = x + 'px';
+            crystal.style.top = y + 'px';
+            document.body.appendChild(crystal);
+            setTimeout(() => crystal.remove(), 4000);
+        }
+
+        // Цвета
+        function getRandomColor() {
+            const colors = ['#ff0066', '#ff00cc', '#6600ff', '#00ccff', '#ff9900', '#00ff99', '#ff33cc', '#33ccff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function getRandomSparkleColor() {
+            const colors = ['gold', 'silver', '#ffd700', '#fffacd', '#f0e68c', '#ff69b4', '#87ceeb'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Обработчик клика
+        document.addEventListener('click', function(e) {
+            heartsCount++;
+            counterElement.textContent = heartsCount;
+
+            // Создаем эффекты
+            const effectsCount = 12 + Math.floor(heartsCount / 5);
+
+            for (let i = 0; i < effectsCount; i++) {
+                const offsetX = (Math.random() - 0.5) * 120;
+                const offsetY = (Math.random() - 0.5) * 120;
+
+                setTimeout(() => {
+                    createHeart(e.clientX + offsetX, e.clientY + offsetY);
+                    createSparkle(e.clientX + offsetX, e.clientY + offsetY);
+                    
+                    if (heartsCount % 3 === 0) {
+                        createFlower(e.clientX + offsetX, e.clientY + offsetY);
+                    }
+                    
+                    if (heartsCount % 4 === 0) {
+                        createButterfly(e.clientX + offsetX, e.clientY + offsetY);
+                    }
+                    
+                    if (heartsCount % 5 === 0) {
+                        createMagic(e.clientX + offsetX, e.clientY + offsetY);
+                    }
+                    
+                    if (heartsCount % 6 === 0) {
+                        createConfetti(e.clientX + offsetX, e.clientY + offsetY);
+                    }
+                    
+                    if (heartsCount % 7 === 0) {
+                        createCrystal(e.clientX + offsetX, e.clientY + offsetY);
+                    }
+                }, i * 30);
+            }
+
+            // Особые эффекты
+            if (heartsCount % 15 === 0) {
+                createHeartExplosion(e.clientX, e.clientY);
+            }
+            
+            if (heartsCount % 25 === 0) {
+                createMagicCircle(e.clientX, e.clientY);
+            }
+            
+            if (heartsCount % 50 === 0) {
+                createUltimateEffect(e.clientX, e.clientY);
+            }
+        });
+
+        // Особые эффекты
+        function createHeartExplosion(x, y) {
+            for (let i = 0; i < 36; i++) {
+                setTimeout(() => {
+                    const angle = (i / 36) * Math.PI * 2;
+                    const radius = 150;
+                    const explosionX = x + Math.cos(angle) * radius;
+                    const explosionY = y + Math.sin(angle) * radius;
+                    
+                    createHeart(explosionX, explosionY);
+                    createSparkle(explosionX, explosionY);
+                }, i * 50);
+            }
+        }
+
+        function createMagicCircle(x, y) {
+            for (let i = 0; i < 24; i++) {
+                setTimeout(() => {
+                    const angle = (i / 24) * Math.PI * 2;
+                    const radius = 100;
+                    const circleX = x + Math.cos(angle) * radius;
+                    const circleY = y + Math.sin(angle) * radius;
+                    
+                    createMagic(circleX, circleY);
+                    createCrystal(circleX, circleY);
+                }, i * 100);
+            }
+        }
+
+        function createUltimateEffect(x, y) {
+            // Создаем надпись
+            const ultimate = document.createElement('div');
+            ultimate.style.position = 'fixed';
+            ultimate.style.left = x + 'px';
+            ultimate.style.top = y + 'px';
+            ultimate.style.color = '#ff0066';
+            ultimate.style.fontSize = '3rem';
+            ultimate.style.fontWeight = 'bold';
+            ultimate.style.textShadow = '0 0 30px #ff00cc';
+            ultimate.style.transform = 'translate(-50%, -50%)';
+            ultimate.style.zIndex = '10000';
+            ultimate.style.animation = 'pulse 1s infinite';
+            ultimate.innerHTML = 'Я ЛЮБЛЮ ТЕБЯ! 💖';
+            document.body.appendChild(ultimate);
+            
+            setTimeout(() => {
+                ultimate.remove();
+            }, 3000);
+
+            // Создаем мега-взрыв эффектов
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const angle = Math.random() * Math.PI * 2;
+                    const radius = Math.random() * 300;
+                    const ultimateX = x + Math.cos(angle) * radius;
+                    const ultimateY = y + Math.sin(angle) * radius;
+                    
+                    createHeart(ultimateX, ultimateY);
+                    createSparkle(ultimateX, ultimateY);
+                    createFlower(ultimateX, ultimateY);
+                    createButterfly(ultimateX, ultimateY);
+                    createMagic(ultimateX, ultimateY);
+                }, i * 20);
+            }
+        }
+
+        // Автоматические эффекты
+        setInterval(() => {
+            if (Math.random() > 0.5) {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createSparkle(x, y);
+                if (Math.random() > 0.7) {
+                    createButterfly(x, y);
+                }
+            }
+        }, 800);
+
+        // Инициализация
+        createStars();
+        
+        // Добавляем начальные эффекты
+        setTimeout(() => {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createSparkle(x, y);
+                    createButterfly(x, y);
+                }, i * 200);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
